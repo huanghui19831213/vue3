@@ -7,11 +7,12 @@
     </div>
 </template>
 <script>
-import {ref} from 'vue';
+import {ref,getCurrentInstance} from 'vue';
 import { useStore } from "vuex";
 export default {
     setup(props,context) {
         console.log(props,context)
+        const { ctx } = getCurrentInstance();
         const store = useStore()
         let username = ref('')
         const handlerChange=(e)=>{
@@ -19,6 +20,7 @@ export default {
         }
         const login=()=>{
             store.commit('login',username)
+            ctx.$root.$router.push({path:'/home'})
         }
         return{
             handlerChange,login,username

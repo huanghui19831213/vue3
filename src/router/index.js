@@ -2,6 +2,8 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 
 import store from '../store/index.js'
 import { defineAsyncComponent } from 'vue'
+const TwosilderWrapper= defineAsyncComponent(() => import('../layout/twosilderWrapper'))
+
 const LOGIN = defineAsyncComponent(() => import('../page/login/index.vue'))
 const REG = defineAsyncComponent(() => import('../page/register/index.vue'))
 const NOTFIND = defineAsyncComponent(() => import('../page/404/index.vue'))
@@ -14,12 +16,16 @@ let router = createRouter({
   routes: [
     {
       path:'/',
-      name:"首页",
+      name:"登陆",
       component: LOGIN
     },{
       path:'/register',
-      name:"详情",
+      name:"注册",
       component:REG
+    },{
+      path:'/home',
+      name:"首页",
+      component:TwosilderWrapper
     },{
       name: '404',
       path: '/404',
