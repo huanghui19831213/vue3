@@ -7,6 +7,7 @@ const TwosilderWrapper= defineAsyncComponent(() => import('../layout/twosilderWr
 const LOGIN = defineAsyncComponent(() => import('../page/login/index.vue'))
 const REG = defineAsyncComponent(() => import('../page/register/index.vue'))
 const NOTFIND = defineAsyncComponent(() => import('../page/404/index.vue'))
+const HomeIndex = defineAsyncComponent(() => import('../page/home/index.vue'))
 
 // 在 Vue-router新版本中，需要使用createRouter来创建路由
 let router = createRouter({
@@ -25,7 +26,13 @@ let router = createRouter({
     },{
       path:'/home',
       name:"首页",
-      component:TwosilderWrapper
+      component:TwosilderWrapper,
+      children:[
+        {
+          path:'index',
+          component:HomeIndex,
+        }
+      ]
     },{
       name: '404',
       path: '/404',

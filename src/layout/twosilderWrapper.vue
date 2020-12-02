@@ -12,8 +12,7 @@
         </a-menu>
         </div>
         <div class="right"> 
-        2
-        
+            <router-view></router-view>
         </div>
     </div>
 </template>
@@ -46,25 +45,23 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     .leftrightWrapper{
-        display:flex;
-        position: fixed;
-        top:0px;
-        padding-top:80px;
-        box-sizing: border-box;
-        height:100%;
         width:100%;
         >.left{
-            width:300px;
-            position:fixed;
+            width:256px;
+            position:absolute;
+            top:80px;
             height:100%;
         }
         >.right{
-            flex:1;
+            padding:20px 20px 20px 276px;
         }
         .ant-menu-inline{
             height:100%;
+        }
+        .ant-menu-inline .ant-menu-submenu{
+            text-align:left;
         }
     }
 </style>
