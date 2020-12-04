@@ -1,4 +1,10 @@
 <template>
+     <a-menu
+            mode="inline"
+            :openKeys="openKeys"
+            :selectedKeys="selectedKeys"
+            style="width: 256px"
+            @openChange="onOpenChange">
         <a-sub-menu v-for="item in data"  :key="item.name" :title="item.name">
             <template v-if="item.children.length>0" >
                 <template v-for="oitem in item.children">
@@ -12,7 +18,8 @@
                     </template> 
                 </template>
             </template>
-        </a-sub-menu> 
+        </a-sub-menu>    
+     </a-menu>
 </template>
 
 <script>
@@ -27,18 +34,22 @@ export default {
     setup(props){
         // const data = inject('proMsg')
         console.log(props)
-        // const onOpenChange=(openKeys)=> {
-        //     console.log(openKeys)
-        //     // const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
-        //     // if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-        //     //     this.openKeys = openKeys;
-        //     // } else {
-        //     //     this.openKeys = latestOpenKey ? [latestOpenKey] : [];
-        //     // }
-        // }
-        // return{
-        //     data,onOpenChange
-        // }
+
+      let selectedKeys=['option21'];
+      let openKeys = ['nav2'];
+      let rootSubmenuKeys=[]
+      const onOpenChange=(keys)=> {
+        const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
+        if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+            openKeys = keys;
+        } else {
+            openKeys = latestOpenKey ? [latestOpenKey] : [];
+        }
+        console.log(openKeys)
+     }
+        return{
+            selectedKeys,openKeys,onOpenChange
+        }
     }
 }
 </script>

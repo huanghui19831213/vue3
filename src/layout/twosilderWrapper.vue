@@ -1,15 +1,7 @@
 <template>
     <div class="leftrightWrapper">
         <div class="left">
-        <a-menu
-            mode="inline"
-            :openKeys="openKeys"
-            :selectedKeys="selectedKeys"
-            style="width: 256px"
-            @openChange="onOpenChange">
-
             <silder :data="menuData"></silder>
-        </a-menu>
         </div>
         <div class="right"> 
             <router-view></router-view>
@@ -39,8 +31,11 @@ export default {
               ]}
           ]
       }]
+    
+      let selectedKeys=['option11'];
+      let openKeys = ['nav1'];
       return {
-          menuData
+          menuData,selectedKeys,openKeys
       }
   }
 }
@@ -55,7 +50,7 @@ export default {
             height:100%;
         }
         >.right{
-            padding:20px 20px 20px 276px;
+            padding:20px 20px 0px 276px;
         }
         .ant-menu-inline{
             height:100%;
